@@ -35,4 +35,11 @@
             Return Me.vYearLabel
         End Get
     End Property
+
+    Private Sub vDayNUD_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles vDayNUD.ValueChanged
+        Dim day As Integer = vDayNUD.Value
+        If day > 31 And day <> 888 Then
+            vDayNUD.Value = 31
+        End If
+    End Sub
 End Class

@@ -37,25 +37,34 @@ Partial Class UcKAISDatePicker
         '
         Me.vDayNUD.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.vDayNUD.Location = New System.Drawing.Point(49, 3)
+        Me.vDayNUD.Maximum = New Decimal(New Integer() {888, 0, 0, 0})
+        Me.vDayNUD.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.vDayNUD.Name = "vDayNUD"
         Me.vDayNUD.Size = New System.Drawing.Size(59, 26)
         Me.vDayNUD.TabIndex = 0
+        Me.vDayNUD.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'vMonthNUD
         '
         Me.vMonthNUD.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.vMonthNUD.Location = New System.Drawing.Point(179, 3)
+        Me.vMonthNUD.Maximum = New Decimal(New Integer() {888, 0, 0, 0})
+        Me.vMonthNUD.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.vMonthNUD.Name = "vMonthNUD"
         Me.vMonthNUD.Size = New System.Drawing.Size(59, 26)
         Me.vMonthNUD.TabIndex = 0
+        Me.vMonthNUD.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'vYearNUD
         '
         Me.vYearNUD.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.vYearNUD.Location = New System.Drawing.Point(297, 3)
+        Me.vYearNUD.Maximum = New Decimal(New Integer() {888, 0, 0, 0})
+        Me.vYearNUD.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.vYearNUD.Name = "vYearNUD"
         Me.vYearNUD.Size = New System.Drawing.Size(59, 26)
         Me.vYearNUD.TabIndex = 0
+        Me.vYearNUD.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'vDayLabel
         '
