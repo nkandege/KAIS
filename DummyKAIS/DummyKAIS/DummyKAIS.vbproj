@@ -72,11 +72,33 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.vb">
+    <Compile Include="CommandFactory.vb" />
+    <Compile Include="DatabaseSettings.vb" />
+    <Compile Include="Field.vb" />
+    <Compile Include="FieldControl.vb" />
+    <Compile Include="FreeTextFieldControl.vb" />
+    <Compile Include="Lookup.vb" />
+    <Compile Include="MultipleResponseFieldControl.vb" />
+    <Compile Include="NumericFieldControl.vb" />
+    <Compile Include="QuestionForm.vb" />
+    <Compile Include="FormSelectionForm.Designer.vb">
+      <DependentUpon>FormSelectionForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormSelectionForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="MainForm.Designer.vb">
+      <DependentUpon>MainForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SingleResponseFieldControl.vb" />
+    <Compile Include="XMLConfigTestForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XMLConfigTestForm.Designer.vb">
+      <DependentUpon>XMLConfigTestForm.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -94,10 +116,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Settings.vb" />
+    <Compile Include="SettingsManager.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <EmbeddedResource Include="FormSelectionForm.resx">
+      <DependentUpon>FormSelectionForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMLConfigTestForm.resx">
+      <DependentUpon>XMLConfigTestForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -107,6 +137,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

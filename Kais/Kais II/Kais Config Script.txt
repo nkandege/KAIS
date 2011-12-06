@@ -1,0 +1,520 @@
+Create Database [KaisII]
+GO
+Use [KaisII]
+GO
+/****** Object:  Table [dbo].[CFG_Forms]    Script Date: 11/28/2011 15:09:13 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CFG_Forms](
+	[Frm_No] [int] IDENTITY(1,1) NOT NULL,
+	[Frm_Name] [nvarchar](100) NULL,
+	[Frm_Title] [nvarchar](255) NULL,
+	[Frm_Caption] [nvarchar](255) NULL,
+	[Frm_CaptionAlt] [nvarchar](255) NULL,
+	[Frm_Pages] [int] NULL,
+ CONSTRAINT [PK_Forms] PRIMARY KEY CLUSTERED 
+(
+	[Frm_No] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Internal Questionnaire Identifier' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Forms', @level2type=N'COLUMN',@level2name=N'Frm_No'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Questionnaire Name' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Forms', @level2type=N'COLUMN',@level2name=N'Frm_Name'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Questionnaire title' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Forms', @level2type=N'COLUMN',@level2name=N'Frm_Title'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Questionnaire Caption Primary Language' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Forms', @level2type=N'COLUMN',@level2name=N'Frm_Caption'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Questionnaire Caption Secondary Language' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Forms', @level2type=N'COLUMN',@level2name=N'Frm_CaptionAlt'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Questionnaire No. Of Pages' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Forms', @level2type=N'COLUMN',@level2name=N'Frm_Pages'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'<b>Table Type: </b> System Configuration <br>
+<b>Table Data:</b>  Study Questionnaires <br>
+<b>Table Dependancies:</b> None' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Forms'
+GO
+
+CREATE TABLE [dbo].[CFG_QuestionTypes](
+	[qt_Id] [tinyint] NOT NULL,
+	[qt_TypeName] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_CFG_QuestionTypes] PRIMARY KEY CLUSTERED 
+(
+	[qt_Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'<b>Table Type: </b> System Configuration<br>
+<b>Table Data:</b> Question Types<br>
+<b>Table Dependancies:</b> None' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_QuestionTypes'
+GO
+
+CREATE TABLE [dbo].[CFG_Lookups](
+	[Lkp_No] [int] IDENTITY(0,1) NOT NULL,
+	[Lkp_ParentID] [int] NOT NULL,
+	[Lkp_Code] [varchar](50) NOT NULL,
+	[Lkp_mapping] [varchar](50) NOT NULL,
+	[Lkp_Index] [int] NOT NULL,
+	[Lkp_Description] [varchar](255) NOT NULL,
+	[Lkp_DescriptionLocal] [varchar](255) NOT NULL,
+	[Lkp_TableId] [int] NOT NULL,
+	[Lkp_IsOtherSpecify] [bit] NOT NULL,
+	[Lkp_GUID] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
+	[Lkp_SystemName] [varchar](50) NULL,
+	[Lkp_EnglishPrompt] [varchar](250) NULL,
+	[Lkp_LocalPrompt] [varchar](250) NULL,
+ CONSTRAINT [PK__CFG_Lookups__lkp_id] PRIMARY KEY NONCLUSTERED 
+(
+	[Lkp_No] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Internal Code Identifier' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Lookups', @level2type=N'COLUMN',@level2name=N'Lkp_No'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Response Grouping Category' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Lookups', @level2type=N'COLUMN',@level2name=N'Lkp_ParentID'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Response Code' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Lookups', @level2type=N'COLUMN',@level2name=N'Lkp_Code'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Alternative Response Mapping Code' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Lookups', @level2type=N'COLUMN',@level2name=N'Lkp_mapping'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Response Code Index' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Lookups', @level2type=N'COLUMN',@level2name=N'Lkp_Index'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Description of Response Code' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Lookups', @level2type=N'COLUMN',@level2name=N'Lkp_Description'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Response Grouping Scheme' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Lookups', @level2type=N'COLUMN',@level2name=N'Lkp_TableId'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Flag indication if Response Code allows uncoded Responses (Other Specify Category) ' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Lookups', @level2type=N'COLUMN',@level2name=N'Lkp_IsOtherSpecify'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'<b>Table Type: </b> System Configuration <br>
+<b>Table Data:</b> Study Code Sheets <br>
+<b>Table Dependancies:</b> None <br>
+' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Lookups'
+GO
+
+ALTER TABLE [dbo].[CFG_Lookups] ADD  CONSTRAINT [DF__CFG_Lookups__Lkp_Parentid]  DEFAULT ((0)) FOR [Lkp_ParentID]
+GO
+
+ALTER TABLE [dbo].[CFG_Lookups] ADD  CONSTRAINT [DF_CFG_Lookups_Lkp_Code]  DEFAULT ('') FOR [Lkp_Code]
+GO
+
+ALTER TABLE [dbo].[CFG_Lookups] ADD  CONSTRAINT [DF__CFG_Lookups__Lkp_Name]  DEFAULT ('') FOR [Lkp_mapping]
+GO
+
+ALTER TABLE [dbo].[CFG_Lookups] ADD  CONSTRAINT [DF__CFG_Lookups__Lkp_DisplayOrder]  DEFAULT ((0)) FOR [Lkp_Index]
+GO
+
+ALTER TABLE [dbo].[CFG_Lookups] ADD  CONSTRAINT [DF_CFG_Lookups_Lkp_Description]  DEFAULT ('') FOR [Lkp_Description]
+GO
+
+ALTER TABLE [dbo].[CFG_Lookups] ADD  CONSTRAINT [DF_CFG_Lookups_Lkp_DescriptionLocal]  DEFAULT ('') FOR [Lkp_DescriptionLocal]
+GO
+
+ALTER TABLE [dbo].[CFG_Lookups] ADD  CONSTRAINT [DF_CFG_Lookups_Lkp_IsOtherSpecify]  DEFAULT ((0)) FOR [Lkp_IsOtherSpecify]
+GO
+
+ALTER TABLE [dbo].[CFG_Lookups] ADD  CONSTRAINT [DF_CFG_Lookups_Frm_GUID]  DEFAULT (newid()) FOR [Lkp_GUID]
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[CFG_Fields](
+	[Fld_No] [int] IDENTITY(0,1) NOT NULL,
+	[fld_ParentID] [int] NOT NULL,
+	[Fld_TableName] [varchar](50) NOT NULL,
+	[Fld_ColumnName] [varchar](1000) NOT NULL,
+	[Fld_QNo] [varchar](50) NOT NULL,
+	[Fld_QuestionEnglish] [varchar](1000) NOT NULL,
+	[Fld_QuestionLocal] [varchar](1000) NULL,
+	[Fld_QuestionAlt] [varchar](1000) NULL,
+	[Fld_TypeText] [varchar](50) NOT NULL,
+	[Fld_Type] [tinyint] NOT NULL,
+	[Fld_Index] [int] NOT NULL,
+	[Fld_FormId] [int] NULL,
+	[Fld_SQL] [varchar](1000) NULL,
+	[Fld_Attributes] [varchar](50) NULL,
+	[Fld_LookupID] [int] NOT NULL,
+	[Fld_Mandatory] [bit] NULL,
+	[Fld_Min] [int] NULL,
+	[Fld_Max] [int] NULL,
+	[Fld_MaxLength] [int] NULL,
+	[Fld_MinLength] [int] NULL,
+	[Fld_Defaultvalue] [varchar](50) NULL,
+	[Fld_InstructionTextEnglish] [varchar](1000) NULL,
+	[Fld_InstructionTextLocal] [varchar](1000) NULL,
+	[Fld_InstructionTextAlt] [varchar](1000) NULL,
+	[Fld_isExistingValue] [bit] NULL,
+	[Fld_ParentField] [int] NULL,
+	[Fld_HasChildren] [bit] NULL,
+	[Fld_IntroTextEnglish] [varchar](1000) NULL,
+	[Fld_IntroTextLocal] [varchar](1000) NULL,
+	[Fld_IntroTextAlt] [varchar](1000) NULL,
+	[Fld_CaptionEnglish] [varchar](200) NULL,
+	[Fld_CaptionLocal] [varchar](200) NULL,
+	[Fld_CaptionAlt] [varchar](1000) NULL,
+	[Fld_PostReq] [nvarchar](50) NULL,
+	[Fld_PreReq] [nvarchar](50) NULL,
+	[Fld_HasSkip] [bit] NOT NULL,
+	[Fld_SecondaryLookupId] [int] NULL,
+	[Fld_Attachment] [varchar](50) NULL,
+	[Fld_TableKeys] [varchar](500) NULL,
+	[AccessLevels] [varchar](50) NULL,
+ CONSTRAINT [PK_Fields] PRIMARY KEY CLUSTERED 
+(
+	[Fld_No] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Destination Table Mapping of Question ' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_TableName'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Destination Table Mapping of Question ' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_ColumnName'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Question Number' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_QNo'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Primary Language (English) Question Text' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_QuestionEnglish'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Secondary Language (Local Language) Question Text ' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_QuestionLocal'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Alternate Language Question Text ' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_QuestionAlt'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Question Type text' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_TypeText'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Question Type Code' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_Type'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Question Order Index' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_Index'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Question Parent Form' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_FormId'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'SQL Query associated to Question (Internal Use Only)' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_SQL'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Question Attributes' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_Attributes'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Question Primary reference Code Sheet' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_LookupID'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Mandatory Option Flag' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_Mandatory'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Minimum allowed Value' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_Min'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Maximum Allowed Value' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_Max'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Default Value' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_Defaultvalue'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Interviewer Instruction Text ' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_InstructionTextEnglish'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Existing Value Flag' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_isExistingValue'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'ID of Parent Question' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_ParentField'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Question is a Parent Question' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_HasChildren'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Introduction text in Primary Language' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_IntroTextEnglish'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Introduction text in Secondary Language' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_IntroTextLocal'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Alternate Language Introduction Text' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_IntroTextAlt'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Question Caption In Primary Language ' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_CaptionEnglish'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Question Caption in Secondary Language' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_CaptionLocal'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Alternate language Caption Text' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_CaptionAlt'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Question Post Requisites' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_PostReq'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Question Pre-requisites' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_PreReq'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Question skip pattern flag' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_HasSkip'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Question secondary reference code sheet ' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields', @level2type=N'COLUMN',@level2name=N'Fld_SecondaryLookupId'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'<b>Table Type: </b> System Configuration <br>
+<b>Table Data:</b>  Study Questions<br>
+<b>Table Dependancies:</b> CFG_Forms, CFG_Lookups' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Fields'
+GO
+
+ALTER TABLE [dbo].[CFG_Fields]  WITH CHECK ADD  CONSTRAINT [FK_CFG_Fields_CFG_Forms] FOREIGN KEY([Fld_FormId])
+REFERENCES [dbo].[CFG_Forms] ([Frm_No])
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] CHECK CONSTRAINT [FK_CFG_Fields_CFG_Forms]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields]  WITH CHECK ADD  CONSTRAINT [FK_CFG_Fields_CFG_Lookups] FOREIGN KEY([Fld_LookupID])
+REFERENCES [dbo].[CFG_Lookups] ([Lkp_No])
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] CHECK CONSTRAINT [FK_CFG_Fields_CFG_Lookups]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields]  WITH CHECK ADD  CONSTRAINT [FK_CFG_Fields_CFG_QuestionTypes] FOREIGN KEY([Fld_Type])
+REFERENCES [dbo].[CFG_QuestionTypes] ([qt_Id])
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] CHECK CONSTRAINT [FK_CFG_Fields_CFG_QuestionTypes]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_fld_ParentID
+fkl_ParentID]]]  DEFAULT ((0)) FOR [fld_ParentID]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_TableField]  DEFAULT ('') FOR [Fld_TableName]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_Name]  DEFAULT ('') FOR [Fld_ColumnName]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_QNo]  DEFAULT ('') FOR [Fld_QNo]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_QuestionEnglish]  DEFAULT ('') FOR [Fld_QuestionEnglish]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_QuestionLocal]  DEFAULT ('') FOR [Fld_QuestionLocal]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_QuestionAlt]  DEFAULT ('') FOR [Fld_QuestionAlt]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_TypeText]  DEFAULT ('') FOR [Fld_TypeText]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_Type]  DEFAULT ((0)) FOR [Fld_Type]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_Index]  DEFAULT ((0)) FOR [Fld_Index]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_FormId]  DEFAULT ((0)) FOR [Fld_FormId]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_SQL]  DEFAULT ('') FOR [Fld_SQL]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_Attributes]  DEFAULT ('') FOR [Fld_Attributes]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_LookupID]  DEFAULT ((0)) FOR [Fld_LookupID]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Ffd_Mandatory]  DEFAULT ((0)) FOR [Fld_Mandatory]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_Min]  DEFAULT ((0)) FOR [Fld_Min]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_Max]  DEFAULT ((0)) FOR [Fld_Max]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_MaxLength]  DEFAULT ((0)) FOR [Fld_MaxLength]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_MinLength]  DEFAULT ((0)) FOR [Fld_MinLength]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_Defaultvalue]  DEFAULT ('') FOR [Fld_Defaultvalue]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_InstructionText]  DEFAULT ('') FOR [Fld_InstructionTextEnglish]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_InstructionTextLocal]  DEFAULT ('') FOR [Fld_InstructionTextLocal]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_InstructionTextAlt]  DEFAULT ('') FOR [Fld_InstructionTextAlt]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_isExistingValue]  DEFAULT ('') FOR [Fld_isExistingValue]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_ParentField]  DEFAULT ((-1)) FOR [Fld_ParentField]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_HasChildren]  DEFAULT ((0)) FOR [Fld_HasChildren]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_IntroTextEnglish]  DEFAULT ('') FOR [Fld_IntroTextEnglish]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_IntroTextLocal]  DEFAULT ('') FOR [Fld_IntroTextLocal]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_IntroTextAlt]  DEFAULT ('') FOR [Fld_IntroTextAlt]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_CaptionEnglish]  DEFAULT ('') FOR [Fld_CaptionEnglish]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_CaptionLocal]  DEFAULT ('') FOR [Fld_CaptionLocal]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_CaptionAlt]  DEFAULT ('') FOR [Fld_CaptionAlt]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_PostReq]  DEFAULT ('') FOR [Fld_PostReq]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_PreReq]  DEFAULT ('') FOR [Fld_PreReq]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_HasSkip]  DEFAULT ((0)) FOR [Fld_HasSkip]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_SecondaryLookupId]  DEFAULT ((0)) FOR [Fld_SecondaryLookupId]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_Attachment]  DEFAULT ('') FOR [Fld_Attachment]
+GO
+
+ALTER TABLE [dbo].[CFG_Fields] ADD  CONSTRAINT [DF_CFG_Fields_Fld_TableKeys]  DEFAULT ('') FOR [Fld_TableKeys]
+GO
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[CFG_Skips](
+	[Skp_No] [int] IDENTITY(1,1) NOT NULL,
+	[Skp_FieldNo] [int] NOT NULL,
+	[Skp_FieldValue] [varchar](255) NOT NULL,
+	[Skp_Operator] [varchar](50) NOT NULL,
+	[Skp_SkipToField] [int] NOT NULL,
+	[Skp_GUID] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
+ CONSTRAINT [PK__CFG_Skip__3DCF39591367E606] PRIMARY KEY CLUSTERED 
+(
+	[Skp_No] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Internal Skip Identifier' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Skips', @level2type=N'COLUMN',@level2name=N'Skp_No'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Question that Skip pattern is configured on' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Skips', @level2type=N'COLUMN',@level2name=N'Skp_FieldNo'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Value that triggers Skip pattern' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Skips', @level2type=N'COLUMN',@level2name=N'Skp_FieldValue'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Operator used to evaluate response that triggers skip execution (Equal to, Not Equal to, Greater Than, Contains)' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Skips', @level2type=N'COLUMN',@level2name=N'Skp_Operator'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Question to stkip to if skip pattern is triggered' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Skips', @level2type=N'COLUMN',@level2name=N'Skp_SkipToField'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Global Identifier' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Skips', @level2type=N'COLUMN',@level2name=N'Skp_GUID'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'<b>Table Type: </b> System Configuration <br>
+<b>Table Data:</b> Questionnaire Skips patterns<br>
+<b>Table Dependancies:</b> CFG_Fields' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'CFG_Skips'
+GO
+
+ALTER TABLE [dbo].[CFG_Skips]  WITH CHECK ADD  CONSTRAINT [FK_CFG_Skips_CFG_Fields] FOREIGN KEY([Skp_FieldNo])
+REFERENCES [dbo].[CFG_Fields] ([Fld_No])
+GO
+
+ALTER TABLE [dbo].[CFG_Skips] CHECK CONSTRAINT [FK_CFG_Skips_CFG_Fields]
+GO
+
+ALTER TABLE [dbo].[CFG_Skips]  WITH CHECK ADD  CONSTRAINT [FK_CFG_Skips_CFG_Fields1] FOREIGN KEY([Skp_SkipToField])
+REFERENCES [dbo].[CFG_Fields] ([Fld_No])
+GO
+
+ALTER TABLE [dbo].[CFG_Skips] CHECK CONSTRAINT [FK_CFG_Skips_CFG_Fields1]
+GO
+
+ALTER TABLE [dbo].[CFG_Skips] ADD  CONSTRAINT [DF_CFG_Skips_Skp_FieldNo]  DEFAULT ((0)) FOR [Skp_FieldNo]
+GO
+
+ALTER TABLE [dbo].[CFG_Skips] ADD  CONSTRAINT [DF_CFG_Skips_Skp_FieldValue]  DEFAULT ('') FOR [Skp_FieldValue]
+GO
+
+ALTER TABLE [dbo].[CFG_Skips] ADD  CONSTRAINT [DF_Skips_Skp_Operator]  DEFAULT ('') FOR [Skp_Operator]
+GO
+
+ALTER TABLE [dbo].[CFG_Skips] ADD  CONSTRAINT [DF_CFG_Skips_Skp_SkipToField]  DEFAULT ('') FOR [Skp_SkipToField]
+GO
+
+ALTER TABLE [dbo].[CFG_Skips] ADD  CONSTRAINT [DF_Table_1_Frm_GUID]  DEFAULT (newid()) FOR [Skp_GUID]
+GO
+
+
